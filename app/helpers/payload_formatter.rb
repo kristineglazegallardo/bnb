@@ -40,7 +40,7 @@ class PayloadFormatter
       email: payload[:guest][:email],
       first_name: payload[:guest][:first_name],
       last_name: payload[:guest][:last_name],
-      phone_numbers: payload[:phone]
+      phone_numbers: payload[:guest][:phone]
     }
 
     guest_id = GetGuestID.new(payload[:guest][:id], guest_details).perform
