@@ -1,18 +1,28 @@
 # README
-## Sample project for creating BNB reservations for new guest or existing guests.
+## Sample project for creating BNB reservations for new guest or existing guest.
+
+### Clone BNB repo:
+
+```
+git clone https://github.com/kristineglazegallardo/bnb.git
+```
+
 ### To setup local DB:
+
 ```
 rails db:create
 rails db:migrate
 ```
 ### API Endpoints
 #### For creating guest reservations:
+
 ```
 http://localhost:3000/guest_reservations
 ```
 
 #### Sample Request Parameters
 Two sample formats accepted for creating guest reservation:
+
 ```
 {
   "reservation": {
@@ -68,11 +78,36 @@ and
 }
 ```
 #### Sample Guest Reservation Response
+
 ```
 {
     "success": true,
-    "message": "Successfully created the reservation.",
-    "reservation_id": 13,
-    "guest_id": 4
+    "message": "Reservation has been successfully created.",
+    "reservation_details": {
+        "start_date": "2020-04-27",
+        "end_date": "2020-04-27",
+        "expected_payout_amount": "3800.00",
+        "guest_details": {
+            "localized_description": "4 guests",
+            "number_of_adults": 2,
+            "number_of_children": 2,
+            "number_of_infants": 0
+        },
+        "security_price": "500.00",
+        "host_currency": "AUD",
+        "nights": 4,
+        "number_of_guests": 4,
+        "status_type": "accepted",
+        "total_paid_amount_accurate": "4500.00",
+        "guest_id": 4,
+        "reservation_id": 13,
+        "guest_info": {
+            "id": 4,
+            "email": "glaze.gallardo@gmail.com",
+            "first_name": "Glaze",
+            "last_name": "Gallardo",
+            "phone_numbers": "63999999999"
+        }
+    }
 }
 ```
