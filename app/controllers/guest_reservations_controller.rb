@@ -1,6 +1,7 @@
-class ReservationsController <  ActionController::Base
+class GuestReservationsController <  ActionController::Base
   def create
-    result = CreateGuestReservation.new(params).perform
+    byebug
+    result = CreateGuestReservation.new(params.except(:controller)).perform
     
     if result[:success]
       render json: { success: true, message: "Successfully created the reservation." }, status: 200

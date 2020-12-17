@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  post '/reservations/' => 'reservations#create'
+  post '/guest_reservations/' => 'guest_reservations#create'
 end
