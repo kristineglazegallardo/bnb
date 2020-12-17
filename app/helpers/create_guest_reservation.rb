@@ -12,6 +12,9 @@ class CreateGuestReservation
     return { success: false, message: "Duplicate reservation dates." } unless ValidateReservationDates.new(payload_format[:guest_id], payload_format[:start_date], payload_format[:end_date]).valid?
 
     reservation =  Reservation.create(payload_format) 
-    reservation.present? ? { success: true, message: "Reservation has been successfully created.", reservation_id: reservation.id, guest_id: reservation.guest.id } : { success: false, message: "Unable to create or save reservation."}
+
+    guest = reservation.guest
+    guest_info = { id: guest.id, email: guest.email, first_name: guest.first_name, last_name: guest.last_name, phone_numbers: guest.phone_numbers }
+    reservation.present? ? { success: true, message: "Reservation has been successfully created.", reservation_details: payload_format.merge!(reservation_id: reservation.id, guest_info: guest_info) } : { success: false, message: "Unable to create or save reservation."}
   end
 end
